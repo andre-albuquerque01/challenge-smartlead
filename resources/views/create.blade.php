@@ -18,6 +18,15 @@
             </a>
         </div>
     </header>
+    @if ($errors->any())
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <ul class="list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <main class="p-4 max-w-2xl mx-auto bg-white shadow-xl rounded-2xl mt-4 border border-gray-200">
         <form action="{{ route('users.store') }}" method="POST" class="space-y-6">
