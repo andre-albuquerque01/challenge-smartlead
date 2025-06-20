@@ -4,6 +4,8 @@ Este repositório contém uma aplicação Laravel que utiliza o Laravel Sail com
 
 ## 🚀 Pré-requisitos
 
+- PHP
+- Composer
 - Docker instalado
 - Docker Compose
 - Node.js e npm instalados
