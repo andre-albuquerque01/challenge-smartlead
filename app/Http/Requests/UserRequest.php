@@ -58,6 +58,11 @@ class UserRequest extends FormRequest
             "email.min" => "O e-mail deve ter pelo menos 2 caracteres.",
             "email.unique" => "Este e-mail já está cadastrado.",
 
+            "logradouro.required" => "O logradouro é obrigatório.",
+            "numero.required" => "O número é obrigatório.",
+            "bairro.required" => "O bairro é obrigatório.",
+            "localidade.required" => "A localidade é obrigatória.",
+            "uf.required" => "A UF é obrigatória.",
         ];
     }
 }
