@@ -1,62 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto em para desafio da smartlead
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este repositório contém uma aplicação Laravel que utiliza o Laravel Sail como ambiente de desenvolvimento baseado em Docker. Ele inclui integração com Vite para assets modernos, testes automatizados com PHPUnit e manipulação de banco de dados.
 
-## About Laravel
+## 🚀 Pré-requisitos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Docker instalado
+- Docker Compose
+- Node.js e npm instalados
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ⚙️ Subindo o projeto com Docker (Laravel Sail)
 
-## Learning Laravel
+Clone o repositório:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```bash
+git clone https://github.com/andre-albuquerque01/challenge-smartlead.git
+cd challenge-smartlead
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Inicialize os pacotes do Laravel:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```php
+composer install
+```
 
-## Laravel Sponsors
+Crie um arquivo `.env` na raiz do seu projeto e configure as variáveis de ambiente conforme necessário.
+Execute `php artisan config:cache` para aplicar as configurações do arquivo `.env`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Inicie o servidor:
 
-### Premium Partners
+```bash
+./vendor/bin/sail up -d
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Para desativar o servidor:
 
-## Contributing
+```bash
+./vendor/bin/sail down
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Gere a chave da aplicação:
 
-## Code of Conduct
+```bash
+./vendor/bin/sail artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Banco de dados
 
-## Security Vulnerabilities
+O Laravel Sail já sobe um container com MySQL configurado.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Os dados de conexão estão definidos no arquivo .env.
 
-## License
+A conexão padrão geralmente é:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# challenge-smartlead
+```bash
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=challenge_smartlead
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+Inicialize o banco de dados:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+Rodar os teste:
+
+```bash
+./vendor/bin/sail artisan test
+```
+
+Rodando o Vite
+
+```bash
+npm install
+npm run dev
+```
+
+<section>
+  <h2>📝 Informações adicionais</h2>
+  <ul>
+    <li>As rotas estão definidas em <code>routes/web.php</code>.</li>
+    <li>O projeto utiliza <code>Http::get()</code> para consultar o ViaCEP.</li>
+    <li>Os testes incluem criação de usuários, consulta de CEP, e verificação de views.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>🧑‍💻 Autor</h2>
+  <ul>
+    <li>Nome: André</li>
+    <li>LinkedIn: <a href="https://www.linkedin.com/in/andre-albuquerque-ae001" target="_blank" rel="noopener">Linkedin</a></li>
+    <li>GitHub: <a href="https://github.com/andre-albuquerque01" target="_blank" rel="noopener">Github</a></li>
+  </ul>
+</section>
